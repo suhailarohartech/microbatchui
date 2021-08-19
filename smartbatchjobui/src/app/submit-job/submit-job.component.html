@@ -1,0 +1,68 @@
+<mat-card class="SubmitBatchForm">
+
+    <mat-card-title style="color: cadetblue; background-color:wheat;">
+        SubmitBatchForm</mat-card-title>
+    
+    <form [formGroup]="batchForm">
+    
+    <mat-form-field appearance="fill">
+        <mat-label>batchJobName</mat-label>
+        <mat-select matNativeControl required formControlName="batchJobName">
+          <mat-option *ngFor="SubmitBatchJobList">
+            {{SubmitBatchJobList.batchJobName}}
+          </mat-option> 
+          </mat-select>
+      </mat-form-field><br><br>
+
+      <button mat-raised-button color="primary" type="button">
+        SHOW PARAMETER </button><br><br>
+
+<div>
+        <mat-form-field>
+             
+          <input matInput type="parameterName" name="parameterName" placeholder="ParameterName"
+          >
+      </mat-form-field><br>
+      <mat-form-field>
+             
+          <input matInput type="parameterDescription" name="parameterDescription" 
+          placeholder="ParameterDescription" >
+      </mat-form-field><br>
+
+      <mat-form-field appearance="fill">
+          <mat-label>parameterType</mat-label>
+          <select matNativeControl required >
+            <option value="String">String</option>
+            <option value="Integer">Integer</option> 
+            <option value="Number">Number</option> 
+            <option value="Date">Date</option> 
+            </select>
+        </mat-form-field><br>
+        <mat-form-field>
+             
+          <input matInput type="parameterFormat" name="parameterFormat" 
+          placeholder="ParameterFormat" >
+          </mat-form-field><br>
+      
+      <mat-checkbox class="example-margin" >mandatoryFlag</mat-checkbox><br><br>
+      
+      <mat-checkbox class="example-margin" >visibleFlag</mat-checkbox><br>
+      
+      <mat-form-field>
+             
+          <input matInput type="defaultValue" name="defaultValue" 
+          placeholder="DefaultValue" >
+          
+      </mat-form-field><br>
+      <mat-form-field>
+             
+          <input matInput type="regexforValidation" name="regexforValidation" 
+          placeholder="RegexforValidation" >
+      </mat-form-field><br><br>
+    </div>
+
+    <button mat-raised-button color="primary" type="button">
+      SUBMIT </button><br><br>
+
+</form>
+    </mat-card> 

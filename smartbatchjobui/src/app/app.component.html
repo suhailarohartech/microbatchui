@@ -1,0 +1,48 @@
+<mat-sidenav-container fullscreen>
+
+    <mat-sidenav #start>
+        <mat-nav-list (click)="start.close()">
+
+            <a mat-list-item routerLink="/">
+                <span></span>
+            </a>
+
+            <a mat-list-item routerLink="/cbc">
+                <span>CreateBatchJob</span>
+                
+            </a>
+            
+            <a mat-list-item routerLink="submit">
+                <span>SubmitJob</span>
+            </a>
+
+            <a mat-list-item routerLink="data">
+                <span>CreateBatchJobData</span>
+            </a>
+            
+            <a mat-button routerLink="login" 
+            routerLinkActive="active">
+            Log in
+            </a>
+
+            <a mat-button mat-raised-button routerLink="register"
+             routerLinkActive="active">Register
+            </a>
+
+        </mat-nav-list>
+
+    </mat-sidenav>
+
+    <mat-toolbar color="primary">
+        <button mat-icon-button (click)="start.open('mouse')">
+            <mat-icon>menu</mat-icon>
+        </button>
+    </mat-toolbar>
+
+    <div class="main-content">
+
+        <router-outlet></router-outlet>
+
+    </div>
+
+</mat-sidenav-container>

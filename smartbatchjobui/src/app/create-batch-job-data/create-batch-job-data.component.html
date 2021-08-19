@@ -1,0 +1,24 @@
+<mat-card class="create-batch-job-data">
+
+    <mat-card-title style="color: cadetblue; background-color:wheat;">
+        create-batch-job-data</mat-card-title>
+    
+    <form [formGroup]="batchForm">
+    
+    <mat-form-field appearance="fill">
+        <mat-label>batchJobName</mat-label>
+        <mat-select matNativeControl required formControlName="batchJobName">
+          <mat-option *ngFor="let batchJob of batchJobList">
+            {{batchJob.batchJobName}}
+          </mat-option> 
+          </mat-select>
+      </mat-form-field>
+    
+    <ag-grid-angular style="width: 1000px;height: 200px" 
+      class="ag-theme-balham" [columnDefs]="column"
+      [rowData]="rowData"
+      (gridReady)="onGridReady($event)">
+    </ag-grid-angular>
+    
+</form>
+    </mat-card> 

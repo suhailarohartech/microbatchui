@@ -1,0 +1,104 @@
+<mat-card class="create-batch-job-page">
+
+<mat-card-title style="color:tomato; background-color:wheat;">
+    create-batch-job-page</mat-card-title>
+
+<form [formGroup]="batchForm" autocomplete="off" novalidate
+(ngSubmit)="savebatchForm(batchForm.value)" 
+fxLayout="column wrap" fxLayoutAlign="center center"
+fxLayoutGap="10px">
+<mat-card-content>
+<mat-form-field>
+       
+    <input matInput type="batchJobName" name="batchJobName" placeholder="BatchJobName" 
+    formControlName="batchJobName">
+    <mat-error *ngIf="hasError('batchJobName', 'required')">BatchJobName is required</mat-error>              
+</mat-form-field><br>
+<mat-form-field>
+       
+    <input matInput type="batchJobDescription" name="batchJobDescription"
+     placeholder="BatchJobDescription" formControlName="batchJobDescription">
+     <mat-error *ngIf="hasError('batchJobDescription', 'required')">BatchJobDescription is required</mat-error>
+</mat-form-field><br>
+
+<mat-form-field appearance="fill">
+    <mat-label >BatchJobType</mat-label>
+    <select matNativeControl required formControlName="batchJobType">
+      <option value=""></option> 
+      <option value="ETL">ETL</option>
+    </select>
+    
+     </mat-form-field><br><br>
+
+  <button mat-raised-button color="primary" type="button" (click)="addParameterAction()">
+    [+] ADD PARAMETER </button><br><br>
+
+  <div *ngIf="addParameterFlag">
+
+  <mat-form-field>
+       
+    <input matInput type="parameterName" name="parameterName" placeholder="ParameterName"
+    formControlName="parameterName">
+</mat-form-field><br>
+<mat-form-field>
+       
+    <input matInput type="parameterDescription" name="parameterDescription" 
+    placeholder="ParameterDescription" formControlName="parameterDescription">
+</mat-form-field><br>
+<mat-form-field appearance="fill">
+    <mat-label>parameterType</mat-label>
+    <select matNativeControl required formControlName="parameterType">
+      <option value="String">String</option>
+      <option value="Integer">Integer</option> 
+      <option value="Number">Number</option> 
+      <option value="Date">Date</option> 
+      </select>
+  </mat-form-field><br>
+  <mat-form-field>
+       
+    <input matInput type="parameterFormat" name="parameterFormat" 
+    placeholder="ParameterFormat" formControlName="parameterFormat">
+    </mat-form-field><br>
+
+<mat-checkbox class="example-margin" formControlName="mandatoryFlag">mandatoryFlag</mat-checkbox><br><br>
+
+<mat-checkbox class="example-margin" formControlName="visibleFlag">visibleFlag</mat-checkbox><br>
+
+<mat-form-field>
+       
+    <input matInput type="defaultValue" name="defaultValue" 
+    placeholder="DefaultValue" formControlName="defaultValue">
+    
+</mat-form-field><br>
+<mat-form-field>
+       
+    <input matInput type="regexforValidation" name="regexforValidation" 
+    placeholder="RegexforValidation" formControlName="regexforValidation">
+</mat-form-field><br><br>
+
+<div>
+<button mat-raised-button color="primary" type="button" (click)="addAction()">
+  [+] ADD </button><br><br>
+</div>
+
+<ag-grid-angular style="width: 1000px;height: 200px" 
+        class="ag-theme-balham" [columnDefs]="column"
+        [rowData]="rowData"
+        (gridReady)="onGridReady($event)">
+    </ag-grid-angular>
+
+  </div>
+
+</mat-card-content>
+<mat-card-actions>
+  <mat-card-actions >
+<button mat-raised-button color="primary" type="submit" [disabled]="!batchForm.valid">
+    submit
+  </button>
+  <button type="button" mat-raised-button color="warn" 
+  (click)="onCancel()">Cancel</button>
+</mat-card-actions>
+</mat-card-actions>
+
+</form>
+</mat-card> 
