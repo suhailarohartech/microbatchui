@@ -61,10 +61,17 @@ export class CreateBatchJobDataComponent implements OnInit {
       batchJobName : new FormControl('',[Validators.required])
      
    });
-      let response = this.http.get("http://localhost:4200/api/cbj/allGet");
-      response.subscribe((data)=>this.batchJobList=response);
-      
-    console.log("Call REST for getting Job name");
-  }
+   
+   this.dataService.getAll().subscribe(
+    response => {
+      this.batchJobList = this.dataService.getAll();
+      //this.gridApiPollQData.setRowData(this.rowPollQDataData);
+    },
 
+      //let response = this.http.get("http://localhost:4200/api/cbj/allGet");
+      //response.subscribe((data)=>this.batchJobList=response);
+      
+ //   console.log("Call REST for getting Job name");
+ );
+  }
 }

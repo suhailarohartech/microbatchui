@@ -1,5 +1,6 @@
 import { HttpClient,HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
 import { CreateBatchJob } from 'src/app/model/create-batch-jobDto'
 @Injectable({
     providedIn:'root'
@@ -16,6 +17,10 @@ export class DataService{
   public get = (route : string, body:any ) => {
     return this.httpClient.get(this.createCompleteRoute
       (route,this.REST_API_SERVER));
+  }
+  getAll() : Observable<CreateBatchJob> {
+    let urlForAllData = this.REST_API_SERVER = "http://localhost:4200/api/cbj/allGet";
+    return this.httpClient.get<CreateBatchJob>(urlForAllData);
   }
   private createCompleteRoute = (route: String,envAddress:string)=>{
     return `${envAddress}/${route}`;

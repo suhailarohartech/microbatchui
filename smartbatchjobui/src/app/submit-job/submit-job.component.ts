@@ -37,8 +37,7 @@ export class SubmitJobComponent implements OnInit {
       
       let response = this.http.get("http://localhost:4200/api/cbj/allGet");
       response.subscribe((data)=>this.SubmitBatchJobList=response);
-      
-   
+        
   }
 
 }
