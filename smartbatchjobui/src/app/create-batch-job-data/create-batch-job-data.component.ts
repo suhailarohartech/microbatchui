@@ -17,14 +17,24 @@ export class CreateBatchJobDataComponent implements OnInit {
   gridApi: any;
   columnApi: any;
   column = [
-    //  { "headerName": "ParameterName",        "field": "parameterName" },
+    { "headerName": "ParameterName", "field": "parameterName" },
     { "headerName": "ParameterDescription", "field": "parameterDescription" },
     { "headerName": "ParameterType", "field": "parameterType" },
     { "headerName": "parameterFormat", "field": "parameterFormat" },
     { "headerName": "mandatoryFlag", "field": "mandatoryFlag" },
     { "headerName": "visibleFlag", "field": "visibleFlag" },
     { "headerName": "defaultValue", "field": "defaultValue" },
-    { "headerName": "regexforValidation", "field": "regexforValidation" }
+    { "headerName": "regexforValidation", "field": "regexforValidation" },
+    { "headerName": "DELETE", "field": "DELETE" },
+    { "headerName": "EDIT", "field": "EDIT" },
+    {
+      headerName: 'Edit',
+      cellRenderer: 'buttonRenderer',
+      cellRendererParams: {
+
+        label: 'Edit'
+      }
+    }
   ];
 
   rowData = [

@@ -15,21 +15,7 @@
     </mat-form-field><br>
 
     <button mat-raised-button color="primary" type="button">
-      SHOW PARAMETER </button><br><br>
-
-    <mat-form-field appearance="fill">
-      <mat-label>batchJobName</mat-label>
-      <mat-select matNativeControl required formControlName="parameterName">
-        <mat-option>
-        </mat-option>
-      </mat-select>
-    </mat-form-field><br>
-
-    <button mat-raised-button color="primary" type="button">
-      ADD PARAMETER </button>
-
-    <button mat-raised-button color="primary" type="button">
-      DELETE </button><br><br>
+      ADD PARAMETER </button><br><br>
 
     <ag-grid-angular style="width: 1000px;height: 200px" class="ag-theme-balham" [columnDefs]="column"
       [rowData]="rowData" (gridReady)="onGridReady($event)">
