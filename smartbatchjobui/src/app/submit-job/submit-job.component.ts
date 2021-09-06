@@ -4,7 +4,6 @@ import { DataService } from 'src/app/data.service';
 import { CreateBatchJob } from 'src/app/model/create-batch-jobDto';
 import { HttpClient } from '@angular/common/http';
 
-
 @Component({
   selector: 'app-submit-job',
   templateUrl: './submit-job.component.html',
