@@ -1,24 +1,41 @@
 <mat-card class="create-batch-job-data">
 
-    <mat-card-title style="color: cadetblue; background-color:wheat;">
-        create-batch-job-data</mat-card-title>
-    
-    <form [formGroup]="batchForm">
-    
+  <mat-card-title style="color: cadetblue; background-color:wheat;">
+    Update-Data-Job</mat-card-title>
+
+  <form [formGroup]="batchForm">
+
     <mat-form-field appearance="fill">
-        <mat-label>batchJobName</mat-label>
-        <mat-select matNativeControl required formControlName="batchJobName">
-          <mat-option *ngFor="let batchJob of batchJobList">
-            {{batchJob.batchJobName}}
-          </mat-option> 
-          </mat-select>
-      </mat-form-field>
-    
-    <ag-grid-angular style="width: 1000px;height: 200px" 
-      class="ag-theme-balham" [columnDefs]="column"
-      [rowData]="rowData"
-      (gridReady)="onGridReady($event)">
-    </ag-grid-angular>
-    
-</form>
-    </mat-card> 
+      <mat-label>batchJobName</mat-label>
+      <mat-select matNativeControl required formControlName="batchJobName">
+        <mat-option *ngFor="let batchJob of batchJobList">
+          {{batchJob.batchJobName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field><br>
+
+    <button mat-raised-button color="primary" type="button">
+      SHOW PARAMETER </button><br><br>
+
+    <mat-form-field appearance="fill">
+      <mat-label>batchJobName</mat-label>
+      <mat-select matNativeControl required formControlName="parameterName">
+        <mat-option>
+        </mat-option>
+      </mat-select>
+    </mat-form-field><br>
+
+    <button mat-raised-button color="primary" type="button">
+      ADD PARAMETER </button>
+
+    <button mat-raised-button color="primary" type="button">
+      DELETE </button><br><br>
+
+    <ag-grid-angular style="width: 1000px;height: 200px" class="ag-theme-balham" [columnDefs]="column"
+      [rowData]="rowData" (gridReady)="onGridReady($event)">
+    </ag-grid-angular><br><br>
+
+    <button mat-raised-button color="primary" type="button">
+      SUBMIT </button><br><br>
+  </form>
+</mat-card>
