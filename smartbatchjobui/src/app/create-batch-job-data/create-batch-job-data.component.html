@@ -8,7 +8,8 @@
     <mat-form-field appearance="fill">
       <mat-label>batchJobName</mat-label>
       <mat-select matNativeControl required formControlName="batchJobName">
-        <mat-option *ngFor="let batchJob of batchJobList">
+        <mat-option *ngFor="let batchJob of batchJobList" (onSelectionChange)="doSomething($event, batchJob)"
+          [value]="batchJob.batchJobName">
           {{batchJob.batchJobName}}
         </mat-option>
       </mat-select>

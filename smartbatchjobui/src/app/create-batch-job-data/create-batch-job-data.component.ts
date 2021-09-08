@@ -43,8 +43,7 @@ export class CreateBatchJobDataComponent implements OnInit {
     }
   ];
 
-  rowData = [
-  ];
+  rowData: any[] = [];
 
   batchJobList: any = [
     this.batchForm = new FormGroup({
@@ -64,20 +63,23 @@ export class CreateBatchJobDataComponent implements OnInit {
     console.log('Click!....', this.batchForm.controls.batchJobName.value);
   }
   ngOnInit(): void {
-
-
-
-    this.http.get('http://localhost:8080/api/cbj/allGet').subscribe(
+    this.http.get('http://localhost:8080/api/cbj/allGet/').subscribe(
       data => {
         this.batchJobList = data as any[];
         console.log("get all")
       }
     );
-    this.http.get('http://localhost:8080/api/cbj/48').subscribe(
+  }
+  doSomething(test: any, t: any) {
+    console.log(test)
+    console.log(t.id)
+    this.http.get('http://localhost:8080/api/cbj/' + t.id).subscribe(
       data => {
-        this.gridApi = data as any[];
+        this.rowData = data as any[];
+        this.gridApi.setRowData(this.rowData)
         console.log("get all")
       }
-    )
+    );
+
   }
 }
