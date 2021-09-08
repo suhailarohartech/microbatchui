@@ -11,7 +11,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
 
-//@CrossOrigin("*")
+@CrossOrigin("*")
 @RestController
 @RequestMapping("api/")
 public class CreateBatchJobResources {
@@ -19,7 +19,6 @@ public class CreateBatchJobResources {
     @Autowired
     CreateBatchJobService createBatchJobService;
 
- @CrossOrigin(origins = "http" +"://localhost:4200")
 
       @PostMapping("cbj")
       ResponseEntity<CreateBatchJob>  CreateBJob(@RequestBody CreateBatchJob createBatchJob){
@@ -44,5 +43,20 @@ public class CreateBatchJobResources {
           List<CreateBatchJob> createBatchJobResult =
                   createBatchJobService.getAllBatchJob();
           return ResponseEntity.ok().body(createBatchJobResult);
+    }
+    @DeleteMapping("ParameterDelete/{id}")
+    void DeleteParameter(@PathVariable("id")Long id){
+        createBatchJobService.deleteById(id);
+    }
+    @PutMapping("UpadateParametrt/{id}")
+    ResponseEntity<CreateBatchJobParameter> UpadateParametrt(@RequestBody CreateBatchJobParameter createBatchJobParameter,
+                                                             @PathVariable("id")Long id){
+        System.out.println("CreateBatchJobParameter:"+createBatchJobParameter);
+        CreateBatchJobParameter createBatchJobParameterResult =
+                createBatchJobService.UpadetParameter(createBatchJobParameter, id);
+        URI location =
+                ServletUriComponentsBuilder.fromCurrentRequestUri()
+                        .path("{/id}").buildAndExpand(createBatchJobParameterResult).toUri();
+        return ResponseEntity.created(location).body(createBatchJobParameterResult);
     }
 }

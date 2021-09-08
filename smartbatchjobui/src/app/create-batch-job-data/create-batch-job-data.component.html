@@ -14,8 +14,10 @@
       </mat-select>
     </mat-form-field><br>
 
-    <button mat-raised-button color="primary" type="button">
+    <button mat-raised-button color="primary" type="button" (click)="addParameterAction()">
       ADD PARAMETER </button><br><br>
+
+
 
     <ag-grid-angular style="width: 1000px;height: 200px" class="ag-theme-balham" [columnDefs]="column"
       [rowData]="rowData" (gridReady)="onGridReady($event)">

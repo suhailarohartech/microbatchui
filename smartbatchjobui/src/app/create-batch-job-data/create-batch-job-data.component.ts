@@ -25,8 +25,6 @@ export class CreateBatchJobDataComponent implements OnInit {
     { "headerName": "visibleFlag", "field": "visibleFlag" },
     { "headerName": "defaultValue", "field": "defaultValue" },
     { "headerName": "regexforValidation", "field": "regexforValidation" },
-    { "headerName": "DELETE", "field": "DELETE" },
-    { "headerName": "EDIT", "field": "EDIT" },
     {
       headerName: 'Edit',
       cellRenderer: 'buttonRenderer',
@@ -34,54 +32,52 @@ export class CreateBatchJobDataComponent implements OnInit {
 
         label: 'Edit'
       }
+    },
+    {
+      headerName: 'Delete',
+      cellRenderer: 'buttonRenderer',
+      cellRendererParams: {
+
+        label: 'Delete'
+      }
     }
   ];
 
   rowData = [
   ];
 
-  /* batchJobList : any[] = [
-     //{name: 'Send SMS'},
-     //{name: 'Send Email'}
-   ];*/
-  //batchJobList : any;
-
-  /*batchJobList: any = {
-   batchJobName : "",batchJobDescription : "",batchJobType : "",
-   createBatchJobParameter: []
- };*/
   batchJobList: any = [
-
     this.batchForm = new FormGroup({
       batchJobName: new FormControl('', [Validators.required])
-
     })
-  ];
+  ]
+
   onGridReady(params: any) {
     this.gridApi = params.api;
     this.columnApi = params.columnApi;
     params.api.sizeColumnsToFit();
   }
 
-  constructor(private dataService: DataService, public http: HttpClient) { }
+  constructor(private dataService: DataService, private http: HttpClient) { }
 
+  public addParameterAction() {
+    console.log('Click!....', this.batchForm.controls.batchJobName.value);
+  }
   ngOnInit(): void {
 
-    this.batchForm = new FormGroup({
-      batchJobName: new FormControl('', [Validators.required])
 
-    });
 
-    this.dataService.getAll().subscribe(
-      response => {
-        this.batchJobList = this.dataService.getAll();
-        //this.gridApiPollQData.setRowData(this.rowPollQDataData);
-      },
-
-      //let response = this.http.get("http://localhost:4200/api/cbj/allGet");
-      //response.subscribe((data)=>this.batchJobList=response);
-
-      //   console.log("Call REST for getting Job name");
+    this.http.get('http://localhost:8080/api/cbj/allGet').subscribe(
+      data => {
+        this.batchJobList = data as any[];
+        console.log("get all")
+      }
     );
+    this.http.get('http://localhost:8080/api/cbj/48').subscribe(
+      data => {
+        this.gridApi = data as any[];
+        console.log("get all")
+      }
+    )
   }
 }

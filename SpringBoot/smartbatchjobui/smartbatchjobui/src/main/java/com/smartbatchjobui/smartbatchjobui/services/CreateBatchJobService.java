@@ -112,4 +112,39 @@ public class CreateBatchJobService {
         });
         return  createBatchJobList;
     }
+    public void deleteById(Long id){
+            createBatchJobParameterRepository.deleteById(id);
+    }
+    public CreateBatchJobParameter UpadetParameter
+            (CreateBatchJobParameter createBatchJobParameter,Long batchJobId){
+CreateBatchJobEntity createBatchJobEntity =
+        createBatchJobRepository.findById(batchJobId).get();
+
+            CreateBatchJobParameterEntity createBatchJobParameterEntity
+                    = new CreateBatchJobParameterEntity();
+            createBatchJobParameterEntity.setId(batchJobId);
+            createBatchJobParameterEntity.setCreateBatchJobId(createBatchJobEntity.getId());
+            createBatchJobParameterEntity.setDefaultValue(createBatchJobParameter.getDefaultValue());
+            createBatchJobParameterEntity.setVisibleFlag(createBatchJobParameter.getVisibleFlag());
+            createBatchJobParameterEntity.setRegexforValidation(createBatchJobParameter.getRegexforValidation());
+            createBatchJobParameterEntity.setParameterType(createBatchJobParameter.getParameterType());
+            createBatchJobParameterEntity.setParameterName(createBatchJobParameter.getParameterName());
+            createBatchJobParameterEntity.setParameterFormat(createBatchJobParameter.getParameterFormat());
+            createBatchJobParameterEntity.setParameterDescription(createBatchJobParameter.getParameterDescription());
+            createBatchJobParameterEntity.setMandatoryFlag(createBatchJobParameter.getMandatoryFlag());
+            CreateBatchJobParameterEntity createBatchJobParameterEntityResult
+                = createBatchJobParameterRepository.save(createBatchJobParameterEntity);
+
+            CreateBatchJobParameter createBatchJobParameter1 = new CreateBatchJobParameter();
+            createBatchJobParameter1.setId(createBatchJobParameterEntityResult.getId());
+            createBatchJobParameter1.setVisibleFlag(createBatchJobParameterEntityResult.getVisibleFlag());
+            createBatchJobParameter1.setRegexforValidation(createBatchJobParameterEntityResult.getRegexforValidation());
+            createBatchJobParameter1.setParameterType(createBatchJobParameterEntityResult.getParameterType());
+            createBatchJobParameter1.setParameterName(createBatchJobParameterEntityResult.getParameterName());
+            createBatchJobParameter1.setParameterFormat(createBatchJobParameterEntityResult.getParameterFormat());
+            createBatchJobParameter1.setParameterDescription(createBatchJobParameterEntityResult.getParameterDescription());
+            createBatchJobParameter1.setMandatoryFlag(createBatchJobParameterEntityResult.getMandatoryFlag());
+            createBatchJobParameter1.setDefaultValue(createBatchJobParameterEntityResult.getDefaultValue());
+            return createBatchJobParameter1;
+    }
 }
