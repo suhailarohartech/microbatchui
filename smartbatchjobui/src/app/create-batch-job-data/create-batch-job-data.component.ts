@@ -26,10 +26,11 @@ export class CreateBatchJobDataComponent implements OnInit {
     { "headerName": "defaultValue", "field": "defaultValue" },
     { "headerName": "regexforValidation", "field": "regexforValidation" },
     {
+
       headerName: 'Edit',
       cellRenderer: 'buttonRenderer',
       cellRendererParams: {
-
+        onClick: this.onEditButtonClick.bind(this),
         label: 'Edit'
       }
     },
@@ -43,6 +44,13 @@ export class CreateBatchJobDataComponent implements OnInit {
     }
   ];
 
+  onEditButtonClick(params: { rowData: any; }) {
+    this.gridApi.startEditingCell({
+      rowData: params.rowData,
+      colKey: 'ParameterName'
+    });
+  }
+
   rowData: any[] = [];
 
   batchJobList: any = [
@@ -52,6 +60,8 @@ export class CreateBatchJobDataComponent implements OnInit {
   ]
 
   onGridReady(params: any) {
+    //this.rowData = params.rowData
+
     this.gridApi = params.api;
     this.columnApi = params.columnApi;
     params.api.sizeColumnsToFit();
