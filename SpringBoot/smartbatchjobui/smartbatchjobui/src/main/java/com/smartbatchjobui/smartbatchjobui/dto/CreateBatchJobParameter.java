@@ -11,6 +11,21 @@ public class CreateBatchJobParameter {
     private String DefaultValue ;
     private String RegexforValidation ;
 
+    public CreateBatchJobParameter(){
+
+    }
+    public CreateBatchJobParameter(Long id, String parameterName, String parameterDescription, String parameterType, String parameterFormat, Boolean mandatoryFlag, Boolean visibleFlag, String defaultValue, String regexforValidation) {
+        this.id = id;
+        ParameterName = parameterName;
+        ParameterDescription = parameterDescription;
+        ParameterType = parameterType;
+        ParameterFormat = parameterFormat;
+        MandatoryFlag = mandatoryFlag;
+        VisibleFlag = visibleFlag;
+        DefaultValue = defaultValue;
+        RegexforValidation = regexforValidation;
+    }
+
     @Override
     public String toString() {
         return "createBatchJobParameter{" +

@@ -12,10 +12,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { SharedModule } from './shared/shared.module';
 import { DialogBoxComponent } from './dialog-box/dialog-box.component';
 import { AgGridModule } from 'ag-grid-angular';
-import { CreateBatchJobDataComponent } from './create-batch-job-data/create-batch-job-data.component';
-import { SubmitJobComponent } from './submit-job/submit-job.component';
-import { BtnCellRenderer } from './buttons/button-cell-renderer.component';
-import { Grid } from 'ag-grid-community'
+//import { CreateBatchJobDataComponent } from './create-batch-job-data/create-batch-job-data.component';
+import { UpdateDataJobComponent } from './Update-Data-Job/Update-Data-Job.component';
 
 @NgModule({
   declarations: [
@@ -24,9 +22,8 @@ import { Grid } from 'ag-grid-community'
     LoginComponent,
     RegisterComponent,
     DialogBoxComponent,
-    CreateBatchJobDataComponent,
-    SubmitJobComponent,
-    BtnCellRenderer
+    //    CreateBatchJobDataComponent,
+    UpdateDataJobComponent
 
   ],
   imports: [
@@ -37,8 +34,7 @@ import { Grid } from 'ag-grid-community'
     BrowserAnimationsModule,
     HttpClientModule,
     SharedModule,
-    AgGridModule,
-    AgGridModule.withComponents([BtnCellRenderer])
+    AgGridModule
   ],
 
   providers: [],

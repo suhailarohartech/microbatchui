@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+/*import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/data.service';
 import { CreateBatchJob } from 'src/app/model/create-batch-jobDto';
 import { HttpClient } from '@angular/common/http';
 import { CreateBatchJobComponent } from '../create-batch-job/create-batch-job.component';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { BtnCellRenderer } from '../buttons/button-cell-renderer.component';
+//import { BtnCellRenderer } from '../buttons/button-cell-renderer.component';
+import { CreateBatchJobParameter } from '../model/CreateBatchJobParameter';
+import { RowComp } from 'ag-grid-community';
 
 @Component({
   selector: 'app-create-batch-job-data',
@@ -15,6 +17,11 @@ export class CreateBatchJobDataComponent implements OnInit {
 
   public batchForm!: FormGroup;
 
+  parametr: CreateBatchJobParameter = {
+    parameterName: "", parameterDescription: "", parameterType: "",
+    parameterFormat: "", mandatoryFlag: true, visibleFlag: true,
+    defaultValue: "", regexforValidation: "",
+  };
 
   parameterList: any[] = [];
   BatchJob: CreateBatchJob = {
@@ -39,8 +46,8 @@ export class CreateBatchJobDataComponent implements OnInit {
       "headerName": "actions", "field": "actions",
       cellRenderer: "btnCellRenderer",
       cellRendererParams: {
-        clicked: function () {
-        },
+        onDelete: this.onDelete.bind(this),
+        onEdit: this.onEditButtonClick.bind(this),
         minWidth: 150
       }
     }
@@ -48,7 +55,7 @@ export class CreateBatchJobDataComponent implements OnInit {
   ];
 
   frameworkComponents = {
-    btnCellRenderer: BtnCellRenderer
+    // btnCellRenderer: BtnCellRenderer
   };
 
 
@@ -68,7 +75,12 @@ export class CreateBatchJobDataComponent implements OnInit {
   }
 
   constructor(private dataService: DataService, private http: HttpClient) { }
-
+  onEditButtonClick(params: { rowData: any; }) {
+    this.gridApi.startEditingCell({
+      rowData: params.rowData,
+      colKey: 'ParameterName'
+    });
+  }
   public addParameterFlag = false;
   public addFlag = false;
 
@@ -95,15 +107,6 @@ export class CreateBatchJobDataComponent implements OnInit {
     );
 
   }
-  ondelete() {
-    //console.log(d.id)
-    this.http.delete('http://localhost:8080/api/ParameterDelete/1').subscribe(
-      data => {
-        console.log("delete")
-      }
-    )
-  };
-
   doSomething(test: any, t: any) {
     console.log(test)
     console.log(t.id)
@@ -114,7 +117,6 @@ export class CreateBatchJobDataComponent implements OnInit {
         console.log("get all")
       }
     );
-
   }
   public addParameterAction() {
     this.addParameterFlag = true;
@@ -149,4 +151,10 @@ export class CreateBatchJobDataComponent implements OnInit {
     }
 
   }
-}
+  onDelete(z: any): void {
+    this.http.delete('http://localhost:8080/api/ParameterDelete/' + z.id)
+      .subscribe(() => {
+        console.log('Deleted!');
+      });
+  }
+}*/
