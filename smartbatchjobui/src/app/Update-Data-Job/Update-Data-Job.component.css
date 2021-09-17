@@ -1,0 +1,68 @@
+table {
+  width: 100%;
+}
+.mat-column-parameterName {
+  width: 130px;
+}
+.mat-column-parameterDescription {
+  width: 150px;
+}
+.mat-column-parameterType {
+  width: 130px;
+}
+.mat-column-parameterFormat {
+  width: 130px;
+}
+.mat-column-mandatoryFlag {
+  width: 130px;
+}
+.mat-column-visibleFlag {
+  width: 130px;
+}
+.mat-column-defaultValue {
+  width: 130px;
+}
+.mat-column-regexforValidation {
+  width: 130px;
+}
+.container{
+    margin-top: 4%;
+}
+.fa{
+    font-size: 50px;
+}
+
+.card-body{
+    background-color: cornsilk;
+}
+
+.jumbotron{
+    padding-top: 10px;
+    padding-bottom: 5px;
+    margin-bottom: 0px;
+}
+
+.border{
+    padding: 10px;
+}
+
+.btn{
+    margin-right: 10px;
+}
+
+.fa-edit .fa-remove{
+    font-size: 5px;
+    margin-right: 10px;
+}
+.border{
+  padding: 10px;
+}
+.btn{
+  margin-right: 10px;
+}
+.fa {
+  margin-right: 10px;
+}
+table .btn{
+  margin: 2px;
+}

@@ -1,0 +1,78 @@
+<mat-card class="SubmitBatchForm">
+
+  <mat-card-title style="color: cadetblue; background-color:wheat;">
+    Update-Data-Job</mat-card-title>
+
+  <form [formGroup]="batchForm">
+
+    <mat-form-field appearance="fill">
+      <mat-label>batchJobName</mat-label>
+      <mat-select matNativeControl required formControlName="batchJobName">
+        <mat-option *ngFor="let batchJob of batchJobList" (onSelectionChange)="doSomething($event, batchJob)"
+          [value]="batchJob.batchJobName">
+          {{batchJob.batchJobName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field><br>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="parameterName">
+        <th mat-header-cell *matHeaderCellDef> parameterName </th>
+        <td mat-cell *matCellDef="let element"> {{element.parameterName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="parameterDescription">
+        <th mat-header-cell *matHeaderCellDef> parameterDescription </th>
+        <td mat-cell *matCellDef="let element"> {{element.parameterDescription}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="parameterType">
+        <th mat-header-cell *matHeaderCellDef> parameterType </th>
+        <td mat-cell *matCellDef="let element"> {{element.parameterType}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="parameterFormat">
+        <th mat-header-cell *matHeaderCellDef> parameterFormat </th>
+        <td mat-cell *matCellDef="let element"> {{element.parameterFormat}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="mandatoryFlag">
+        <th mat-header-cell *matHeaderCellDef> mandatoryFlag </th>
+        <td mat-cell *matCellDef="let element"> {{element.mandatoryFlag}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="visibleFlag">
+        <th mat-header-cell *matHeaderCellDef> visibleFlag </th>
+        <td mat-cell *matCellDef="let element"> {{element.visibleFlag}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="defaultValue">
+        <th mat-header-cell *matHeaderCellDef> defaultValue </th>
+        <td mat-cell *matCellDef="let element"> {{element.defaultValue}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="regexforValidation">
+        <th mat-header-cell *matHeaderCellDef> regexforValidation </th>
+        <td mat-cell *matCellDef="let element"> {{element.regexforValidation}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <button mat-raised-button color="primary" mat-button>Edit</button>
+          <button mat-button (click)="onDelete(row)">Delete</button>
+          <button mat-raised-button color="primary" mat-button>Add</button>
+        </mat-cell>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table><br><br>
+
+    <button mat-raised-button color="primary" type="button">
+      SUBMIT </button><br><br>
+
+  </form>
+</mat-card>
