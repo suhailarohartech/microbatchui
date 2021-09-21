@@ -12,8 +12,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { SharedModule } from './shared/shared.module';
 import { DialogBoxComponent } from './dialog-box/dialog-box.component';
 import { AgGridModule } from 'ag-grid-angular';
-//import { CreateBatchJobDataComponent } from './create-batch-job-data/create-batch-job-data.component';
 import { UpdateDataJobComponent } from './Update-Data-Job/Update-Data-Job.component';
+import { ADDParameterComponent } from './addparameter/addparameter.component';
 
 @NgModule({
   declarations: [
@@ -22,8 +22,8 @@ import { UpdateDataJobComponent } from './Update-Data-Job/Update-Data-Job.compon
     LoginComponent,
     RegisterComponent,
     DialogBoxComponent,
-    //    CreateBatchJobDataComponent,
-    UpdateDataJobComponent
+    UpdateDataJobComponent,
+    ADDParameterComponent
 
   ],
   imports: [

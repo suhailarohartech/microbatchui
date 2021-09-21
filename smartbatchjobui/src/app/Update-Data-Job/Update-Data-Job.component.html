@@ -1,4 +1,4 @@
-<mat-card class="SubmitBatchForm">
+<mat-card class="UpdateBatchForm">
 
   <mat-card-title style="color: cadetblue; background-color:wheat;">
     Update-Data-Job</mat-card-title>
@@ -13,7 +13,10 @@
           {{batchJob.batchJobName}}
         </mat-option>
       </mat-select>
+
     </mat-form-field><br>
+
+    <button mat-raised-button color="primary" mat-button (click)="ADD()">Add-Parameter</button><br><br>
 
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
@@ -60,9 +63,8 @@
       <ng-container matColumnDef="actions">
         <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
         <mat-cell *matCellDef="let row">
-          <button mat-raised-button color="primary" mat-button>Edit</button>
-          <button mat-button (click)="onDelete(row)">Delete</button>
-          <button mat-raised-button color="primary" mat-button>Add</button>
+          <button mat-raised-button color="primary" mat-button (click)="onEdit($event, row)">Edit</button>
+          <button mat-raised-button color="warn" mat-button (click)="onDelete(row)">Delete</button>
         </mat-cell>
       </ng-container>
 

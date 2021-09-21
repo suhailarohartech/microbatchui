@@ -2,9 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DataService } from 'src/app/data.service';
 import { CreateBatchJob } from 'src/app/model/create-batch-jobDto';
+import { CreateBatchJobParameter } from 'src/app/model/CreateBatchJobParameter';
 import { HttpClient } from '@angular/common/http';
 
 export interface PeriodicElement {
+  name: any;
+  id: any;
   parameterName: String;
   parameterDescription: String;
   parameterType: String;
@@ -32,6 +35,8 @@ export class UpdateDataJobComponent implements OnInit {
   dataSource = ELEMENT_DATA;
 
   public batchForm!: FormGroup;
+  //public data:any;
+  //public CreateBatchJobParameter:any;
 
   SubmitBatchJobList: any = [
 
@@ -58,6 +63,7 @@ export class UpdateDataJobComponent implements OnInit {
       data => {
         this.batchJobList = data as any[];
         console.log("get all")
+        console.log(this.batchJobList)
       }
     );
   }
@@ -77,5 +83,14 @@ export class UpdateDataJobComponent implements OnInit {
       .subscribe(() => {
         console.log('Deleted');
       });
+  }
+  onEdit(a: any, b: any) {
+
+    console.log('update')
+  }
+
+  ADD() {
+    //console.log(id)
+    console.log('ADD')
   }
 }
