@@ -13,7 +13,8 @@ import { SharedModule } from './shared/shared.module';
 import { DialogBoxComponent } from './dialog-box/dialog-box.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { UpdateDataJobComponent } from './Update-Data-Job/Update-Data-Job.component';
-import { ADDParameterComponent } from './addparameter/addparameter.component';
+import { Editbatchjob } from './edit-batch-job/edit-batch-job.component';
+import { AddDialogComponent } from './shared/dialogs/add-dialog-component/add-dialog-component.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ADDParameterComponent } from './addparameter/addparameter.component';
     RegisterComponent,
     DialogBoxComponent,
     UpdateDataJobComponent,
-    ADDParameterComponent
+    Editbatchjob,
+    AddDialogComponent,
 
   ],
   imports: [

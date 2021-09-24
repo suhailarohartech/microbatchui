@@ -3,7 +3,15 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DataService } from 'src/app/data.service';
 import { CreateBatchJob } from 'src/app/model/create-batch-jobDto';
 import { CreateBatchJobParameter } from 'src/app/model/CreateBatchJobParameter';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http'; import { ActivatedRoute, Router } from '@angular/router';
+import {
+  MatDialog,
+  MatDialogConfig,
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+} from '@angular/material/dialog';
+import { Editbatchjob } from 'src/app/edit-batch-job/edit-batch-job.component';
+import { AddDialogComponent } from 'src/app/shared/dialogs/add-dialog-component/add-dialog-component.component';
 
 export interface PeriodicElement {
   name: any;
@@ -35,8 +43,6 @@ export class UpdateDataJobComponent implements OnInit {
   dataSource = ELEMENT_DATA;
 
   public batchForm!: FormGroup;
-  //public data:any;
-  //public CreateBatchJobParameter:any;
 
   SubmitBatchJobList: any = [
 
@@ -50,7 +56,10 @@ export class UpdateDataJobComponent implements OnInit {
       batchJobName: new FormControl('', [Validators.required])
     })
   ]
-  constructor(public http: HttpClient, private dataService: DataService) { }
+  id: any;
+  constructor(public http: HttpClient, private dataService: DataService, private router: Router,
+    private route: ActivatedRoute,
+    private dialog: MatDialog) { }
 
   ngOnInit(): void {
 
@@ -84,13 +93,29 @@ export class UpdateDataJobComponent implements OnInit {
         console.log('Deleted');
       });
   }
-  onEdit(a: any, b: any) {
-
-    console.log('update')
+  oncreate() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '60%';
+    this.dialog.open(AddDialogComponent, dialogConfig);
+    let batchname = this.batchForm.controls.batchJobName.value;
+    let desc = this.batchForm.controls.batchJobDescription.value;
+    let type = this.batchForm.controls.batchJobType.value;
+    this.batchForm.reset();
+    this.batchForm.patchValue({
+      batchJobName: batchname,
+      batchJobDescription: desc,
+      batchJobType: type,
+    });
   }
 
-  ADD() {
-    //console.log(id)
-    console.log('ADD')
+  onEdit() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '60%';
+    this.dialog.open(Editbatchjob, dialogConfig);
   }
+  openDialog(): void { }
 }

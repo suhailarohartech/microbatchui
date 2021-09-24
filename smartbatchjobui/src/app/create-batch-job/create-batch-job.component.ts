@@ -4,7 +4,6 @@ import { FormGroup, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CreateBatchJob } from '../model/create-batch-jobDto';
-//import { CreateBatchJobParameter } from 'src/app/model/CreateBatchJobParameter';
 import { DataService } from 'src/app/data.service'
 import { SuccessDialogComponent } from './../shared/dialogs/success-dialog/success-dialog.component';
 import { ErrorHandlerService } from '../shared/error-handler.service';
@@ -80,12 +79,6 @@ export class CreateBatchJobComponent implements OnInit {
       data: {}
     };
   }
-
-
-  //batch(batchForm:NgForm,submit:any){
-  //console.log(batchForm.value,batchForm.valid,submit);
-
-  //}
   public hasError = (controlName: string, errorName: string) => {
     return this.batchForm.controls[controlName].hasError(errorName);
   }
@@ -105,21 +98,7 @@ export class CreateBatchJobComponent implements OnInit {
       batchJobDescription: desc,
       batchJobType: type
     })
-    //  parameterName : new FormControl(''),
-    //  parameterDescription : new FormControl(''),
-    //  parameterType : new FormControl(''),
-    //  parameterFormat : new FormControl(''),
-    //  mandatoryFlag : new FormControl(''),
-    //  visibleFlag : new FormControl(''),
-    //  defaultValue : new FormControl(''),
-    //  regexforValidation : new FormControl('')
-
   }
-  //  public addAction(){
-  //   this.addFlag = true;
-  //   console.log('Click!....');
-  // }
-
   public savebatchForm = (batchFormvalue: {
     batchJobName: any, batchJobDescription: any
     , batchJobType: any, parameterName: any, parameterDescription: any
@@ -164,8 +143,6 @@ export class CreateBatchJobComponent implements OnInit {
     let createBatchJob: CreateBatchJob = this.batchForm.value;
     let CreateBatchJobParameterCopy = Object.assign({}, createBatchJob);
     if (this.validationFlag) {
-      // this.rowData = this.dataService.create.arguments;
-
       this.createBatchJobParameter = Object.assign({}, this.BatchJob);
 
       this.parameterList.push(CreateBatchJobParameterCopy)

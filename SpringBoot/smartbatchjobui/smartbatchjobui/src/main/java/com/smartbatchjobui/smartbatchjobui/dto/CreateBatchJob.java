@@ -3,7 +3,7 @@ package com.smartbatchjobui.smartbatchjobui.dto;
 import java.util.List;
 
 public class CreateBatchJob {
-    private Long id ;
+    private Long batchJobId ;
     private String batchJobName;
     private String batchJobDescription ;
     private String batchJobType ;
@@ -12,7 +12,7 @@ public class CreateBatchJob {
     @Override
     public String toString() {
         return "CreateBatchJob{" +
-                "id=" + id +
+                "batchJobId=" + batchJobId +
                 ", batchJobName='" + batchJobName + '\'' +
                 ", batchJobDescription='" + batchJobDescription + '\'' +
                 ", batchJobType='" + batchJobType + '\'' +
@@ -21,11 +21,11 @@ public class CreateBatchJob {
     }
 
     public Long getId() {
-        return id;
+        return batchJobId;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.batchJobId = id;
     }
 
     public String getBatchJobName() {
