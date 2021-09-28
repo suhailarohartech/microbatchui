@@ -15,9 +15,8 @@ public interface CreateBatchJobParameterRepository  extends
 
         @Transactional
         @Modifying
-        // to mark delete or update query
         @Query(value = "DELETE FROM batch_job_parameter e WHERE e. batch_job_id=:BatchJobId" ,nativeQuery = true)
-        void deleteById(long BatchJobId);// it will delete all the record with specific name
+        void deleteById(long BatchJobId);
         List<CreateBatchJobParameterEntity> findAllByCreateBatchJobId (Long createBatchJobId);
 
 }
