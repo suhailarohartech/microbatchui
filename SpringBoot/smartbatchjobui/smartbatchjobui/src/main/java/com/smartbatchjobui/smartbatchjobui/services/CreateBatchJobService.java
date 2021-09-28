@@ -6,6 +6,7 @@ import com.smartbatchjobui.smartbatchjobui.entity.CreateBatchJobEntity;
 import com.smartbatchjobui.smartbatchjobui.entity.CreateBatchJobParameterEntity;
 import com.smartbatchjobui.smartbatchjobui.repositoris.CreateBatchJobParameterRepository;
 import com.smartbatchjobui.smartbatchjobui.repositoris.CreateBatchJobRepository;
+import com.sun.xml.bind.v2.model.core.ID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -115,6 +116,7 @@ public class CreateBatchJobService {
     public void deleteById(Long id){
             createBatchJobParameterRepository.deleteById(id);
     }
+
     public CreateBatchJobParameter UpadetParameter
             (CreateBatchJobParameter createBatchJobParameter,Long batchJobId){
 CreateBatchJobEntity createBatchJobEntity =
@@ -146,5 +148,9 @@ CreateBatchJobEntity createBatchJobEntity =
             createBatchJobParameter1.setMandatoryFlag(createBatchJobParameterEntityResult.getMandatoryFlag());
             createBatchJobParameter1.setDefaultValue(createBatchJobParameterEntityResult.getDefaultValue());
             return createBatchJobParameter1;
+    }
+    public void deleteById(long BatchJobId) {
+        createBatchJobParameterRepository.deleteById(BatchJobId);
+        createBatchJobRepository.deleteById(BatchJobId);
     }
 }
